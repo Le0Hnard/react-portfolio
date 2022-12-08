@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import Profile from "./components/pages/Profile";
+import Profile from "./pages/Profile";
 import "./App.css";
 import logo from "./assets/logo.svg";
 

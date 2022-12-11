@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import Link from "../components/Link";
+import { Link as RouterLink } from "react-router-dom";
+// import Link from "../components/Link";
 import List from "../components/List";
 
-export const Projects = ({ userName }) => {
+const Projects = ({ userName }) => {
   const [loading, setLoading] = useState(true);
   const [projects, setProjects] = useState({});
 
@@ -32,7 +33,13 @@ export const Projects = ({ userName }) => {
           <List
             items={projects.map((project) => ({
               field: project.name,
-              value: <Link url={project.html_url} title={project.html_url} />,
+              url: project.html_url,
+              // value: <Link url={project.html_url} title={project.html_url} />,
+              value: (
+                <RouterLink to={`/projects/${project.name}`}>
+                  {project.html_url}
+                </RouterLink>
+              ),
             }))}
           />
         </div>
@@ -40,3 +47,5 @@ export const Projects = ({ userName }) => {
     </div>
   );
 };
+
+export default Projects;
